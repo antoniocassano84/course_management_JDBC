@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Courses</title>
+<title>Teachers</title>
 </head>
 <body>
 	<c:catch var="err">
-		<jsp:useBean id="courseBean" class="packt.book.jee.eclipse.ch4.bean.Course"/>
-		<c:set var="courses" value="${courseBean.getCourses()}"/>
+		<jsp:useBean id="teacherBean" class="packt.book.jee.eclipse.ch4.bean.Teacher"/>
+		<c:set var="teachers" value="${teacherBean.getTeachers()}"/>
 	</c:catch>
 	<c:choose>
 		<c:when test="${err != null}">
@@ -29,23 +29,16 @@
 	<table>
 		<tr>
 			<th>Id</th>
-			<th>Name</th>
-			<th>Credits</th>
-			<th>Teacher</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Designation</th>
 		</tr>
-		<c:forEach items="${courses}" var="course">
+		<c:forEach items="${teachers}" var="teacher">
 			<tr>
-				<td>${course.id}</td>
-				<td>${course.name}</td>
-				<td>${course.credits}</td>
-				<c:choose>
-					<c:when test="${course.teacher != null}">
-						<td>${course.teacher.firstName}</td>
-					</c:when>
-					<c:otherwise>
-						<td></td>
-					</c:otherwise>
-				</c:choose>
+				<td>${teacher.id}</td>
+				<td>${teacher.firstName}</td>
+				<td>${teacher.lastName}</td>
+				<td>${teacher.designation}</td>
 			</tr>
 		</c:forEach>
 	</table>
